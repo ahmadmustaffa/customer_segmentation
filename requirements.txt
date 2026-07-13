@@ -1,7 +1,5 @@
 streamlit
+pickle
 numpy
-pandas
-seaborn
 matplotlib
-scikit-learn
-joblib
+seaborn
