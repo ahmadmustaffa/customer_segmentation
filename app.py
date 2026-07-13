@@ -27,7 +27,7 @@ st.table(cluster_df.head())
 # visualizing the clusters
 pca_df_kmeans = pd.read_csv("pca_df_kmeans.csv")
 fig = plt.figure(figsize=(8,8))
-ax = sns.scatterplot(x="PCA1",y="PCA2",hue="cluster", data=pca_df_kmeans, palette=['red','green','blue','black','yellow','purple'])
+ax = sns.scatterplot(x="PCA1",y="PCA2",hue="cluster", data=pca_df_kmeans, palette="Set2")
 plt.title("Clustering using K-Means Algorithm")
 plt.show()
 st.pyplot(fig)

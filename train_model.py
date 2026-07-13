@@ -1,4 +1,5 @@
 
+
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -119,7 +120,7 @@ pca_df_kmeans.to_csv("pca_df_kmeans.csv", index=False)
 
 # visualizing the clusters
 fig = plt.figure(figsize=(8,8))
-ax = sns.scatterplot(x="PCA1",y="PCA2",hue="cluster", data=pca_df_kmeans, palette=['red','green','blue','black','yellow','purple'])
+ax = sns.scatterplot(x="PCA1",y="PCA2",hue="cluster", data=pca_df_kmeans, palette="Set2")
 plt.title("Clustering using K-Means Algorithm")
 # plt.show()
 # st.pyplot(fig)
