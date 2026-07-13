@@ -1,10 +1,12 @@
 import streamlit as st
 import pickle
 import numpy as np
-from train_model import model
-from train_model import cluster_df, pca_df_kmeans
+# from train_model import model
+# from train_model import cluster_df, pca_df_kmeans
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
+
 
 st.header('Customer Segmentation')
 st.write('This application segments customers based on their credit card usage and financial behavior. '
@@ -13,6 +15,7 @@ st.write('This application segments customers based on their credit card usage a
 
 st.subheader("Dataset Overview")
 
+cluster_df = pd.read_csv("Clustered_Customer_Data.csv")
 col1, col2, col3 = st.columns(3)
 
 col1.metric("Customers", len(cluster_df))
@@ -22,6 +25,7 @@ col3.metric("Clusters", 3)
 st.table(cluster_df.head())
 
 # visualizing the clusters
+pca_df_kmeans = pd.read_csv("pca_df_kmeans.csv")
 fig = plt.figure(figsize=(8,8))
 ax = sns.scatterplot(x="PCA1",y="PCA2",hue="cluster", data=pca_df_kmeans, palette=['red','green','blue','black','yellow','purple'])
 plt.title("Clustering using K-Means Algorithm")
@@ -36,12 +40,12 @@ st.pyplot(fig)
 
 
 # saving decision tree model
-filename = 'dectree_final_model.sav'
-pickle.dump(model, open(filename, 'wb'))
+# filename = 'dectree_final_model.sav'
+# pickle.dump(model, open(filename, 'wb'))
 # st.write('decission tree model saved to disk')
 
 # load the model from disk
-loaded_model = pickle.load(open(filename, 'rb'))
+loaded_model = pickle.load(open("dectree_final_model.sav", "rb"))
 st.write('decission tree model loaded from disk')
 # result = loaded_model.score(X_test, y_test)
 # st.write(result,'% Acuuracy')

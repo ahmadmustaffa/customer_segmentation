@@ -114,6 +114,7 @@ plt.title('Elbow Method for Optimal Value of K')
 kmeans_model=KMeans(3)
 kmeans_model.fit_predict(scaled_df)
 pca_df_kmeans= pd.concat([pca_df,pd.DataFrame({'cluster':kmeans_model.labels_})],axis=1)
+pca_df_kmeans.to_csv("pca_df_kmeans.csv", index=False)
 
 
 # visualizing the clusters
